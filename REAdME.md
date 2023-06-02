@@ -1,9 +1,9 @@
-# Dự án Shopee Clone Typescript
+#  Shopee Clone Typescript
  ### Created by
   [DanTD](https://www.facebook.com/duydan272000) 
 
 
-## Chức năng trong dự án
+## Functions in the project
 
 - Authentication module: Management by JWT
 
@@ -52,10 +52,6 @@
 
 ### Bộ ESLint và Prettier trước
 
-> Chúng ta sẽ cài hơi nhiều package 1 tí vì chúng ta setup từ đầu, còn Create React App setup sẵn 1 số thứ về ESLint rồi.
-
-Dưới đây là những depedency mà chúng ta cần cài
-
 - ESLint: linter (bộ kiểm tra lỗi) chính
 
 - Prettier: code formatter chính
@@ -77,6 +73,8 @@ Dưới đây là những depedency mà chúng ta cần cài
 - prettier-plugin-tailwindcss: Sắp xếp class tailwindcss
 
 - eslint-plugin-react-hooks: ESLint cho React hook
+
+- Taiwindcss
 
 
 
