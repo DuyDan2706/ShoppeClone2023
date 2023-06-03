@@ -1,7 +1,16 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
 export default function Login() {
+  //   const {register,
+  //     handleSubmit,
+  //     formState:{errors}} = useForm()
+
+  // const onSubmit = handleSubmit(data =>{
+  //   console.log("data",data)
+  // })
+
   return (
     <div className='bg-orange-500'>
       <div className='mx-auto max-w-7xl px-4'>
@@ -24,11 +33,15 @@ export default function Login() {
                   name='password'
                   className='w-full rounded-sm border border-gray-300 p-4 outline-none focus:border-gray-500 focus:shadow-sm '
                   placeholder='password'
+                  autoComplete='on'
                 />
                 <div className='mt-1 min-h-[1rem] text-sm text-red-500'></div>
               </div>
               <div className='mt-3'>
-                <button className='w-full bg-red-500 px-2 py-4 text-center text-sm uppercase text-white hover:text-red-600'>
+                <button
+                  type='submit'
+                  className='w-full bg-red-500 px-2 py-4 text-center text-sm uppercase text-white hover:text-red-600'
+                >
                   {' '}
                   Đăng nhập{' '}
                 </button>
