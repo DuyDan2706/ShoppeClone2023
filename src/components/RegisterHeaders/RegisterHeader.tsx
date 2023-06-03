@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 export default function RegisterHeader() {
   return (
     <header className='py-5'>
-      <div className='mx-auto max-w-7xl py-4'>
+      <div className='container'>
         <nav className='flex items-end'>
           <img
             className='h-14 lg:h-14'

@@ -1,6 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const plugin = require('tailwindcss/plugin')
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  corePlugins: {
+    container: false
+  },
   theme: {
     extend: {
       backgroundImage: () => ({
@@ -9,7 +15,20 @@ module.exports = {
         // 'user-background':
         //   "linear-gradient(rgba(0,0,0, 0), rgba(0,0,0, 0)), url('https://vshare.amazingtech.vn/static/media/bg-body.85ea3fd6814234db8af1.jpg')",
       }),
+     
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities, addComponents, e, config,theme }) {
+      addComponents({
+        '.container': {
+          maxWidth: theme('columns.7xl'),
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          paddingLeft: theme('spacing.4'),
+          paddingRight: theme('spacing.4')
+        }
+      })
+    }),
+   ],
 }
