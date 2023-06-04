@@ -67,16 +67,15 @@ export const schema = yup.object({
     .required('password là không được để trống')
     .min(5, 'Độ dài từ 6-160 ký tự')
     .max(160, 'Độ dài từ 6-160 ký tự'),
-    cofirm_password:yup
+  cofirm_password: yup
     .string()
     .required('Nhập lại password là không được để trống')
     .min(5, 'Độ dài từ 6-160 ký tự')
     .max(160, 'Độ dài từ 6-160 ký tự')
-    .oneOf([yup.ref('password')], "Xác nhận mật khẩu không khớp với mật khẩu")
-    ,
+    .oneOf([yup.ref('password')], 'Xác nhận mật khẩu không khớp với mật khẩu')
 })
 
-const loginSchema =schema.omit(['cofirm_password'])
+const loginSchema = schema.omit(['cofirm_password'])
 
-type loginSchema= yup.InferType<typeof loginSchema>
+type loginSchema = yup.InferType<typeof loginSchema>
 export type Schema = yup.InferType<typeof schema>

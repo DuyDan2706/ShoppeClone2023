@@ -1,24 +1,64 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
+import { schema, Schema } from 'src/utils/rule'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
+import { login } from 'src/apis/auth.api'
+import { omit } from 'lodash'
+import { isAxiosUnprocessableEntityErorr } from 'src/utils/untils'
+import { ReponseApi } from 'src/types/until.type'
+import Input from 'src/components/Input'
 
+type FormData = Omit<Schema, 'confirm_password'>
+
+const loginSchema = schema.omit(['cofirm_password'])
 export default function Login() {
-  //   const {register,
-  //     handleSubmit,
-  //     formState:{errors}} = useForm()
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setError,
+    formState: { errors }
+  } = useForm<FormData>({
+    resolver: yupResolver(loginSchema)
+  })
 
-  // const onSubmit = handleSubmit(data =>{
-  //   console.log("data",data)
-  // })
+  const loginAccountMultion = useMutation({
+    mutationFn: (body: Omit<FormData, 'cofirm_password'>) => login(body)
+  })
+
+  //const rule = getrule(getValues)
+  const onSubmit = handleSubmit((data) => {
+    console.log('login', data)
+    loginAccountMultion.mutate(data, {
+      onSuccess: (data) => {
+        console.log('data', data)
+      },
+      onError: (error) => {
+        if (isAxiosUnprocessableEntityErorr<ReponseApi<FormData>>(error)) {
+          const formError = error.response?.data.data
+          if (formError) {
+            Object.keys(formError).forEach((key) => {
+              setError(key as keyof Omit<FormData, 'confirm_password'>, {
+                message: formError[key as keyof FormData],
+                type: 'Server'
+              })
+            })
+          }
+        }
+      }
+    })
+  })
 
   return (
     <div className='bg-orange-500'>
       <div className='container'>
         <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-32 lg:pr-10'>
           <div className='lg:col-span-2 lg:col-start-4'>
-            <form className='rounded bg-white p-10 shadow-sm'>
+            <form className='rounded bg-white p-10 shadow-sm' onSubmit={onSubmit} noValidate>
               <div className='text-2xl'>Đăng Nhập</div>
-              <div className='mt-4'>
+              {/* <div className='mt-4'>
                 <input
                   type='email'
                   name='email'
@@ -36,7 +76,27 @@ export default function Login() {
                   autoComplete='on'
                 />
                 <div className='mt-1 min-h-[1rem] text-sm text-red-500'></div>
-              </div>
+              </div> */}
+              <Input
+                name='email'
+                register={register}
+                type='email'
+                className='mt-8'
+                errorMessage={errors.email?.message}
+                placeholder='Email'
+                //rule={rule.email}
+                autoComplete='on'
+              />
+              <Input
+                name='password'
+                register={register}
+                type='password'
+                className='mt-4'
+                errorMessage={errors.password?.message}
+                placeholder='password'
+                //rule={rule.password}
+                autoComplete='on'
+              />
               <div className='mt-3'>
                 <button
                   type='submit'
