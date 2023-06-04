@@ -1,7 +1,9 @@
 import axios, { AxiosError, type AxiosInstance } from 'axios'
+import { toast } from 'react-toastify'
 import config from 'src/constants/config'
+import HttpStatusCode from 'src/constants/httpStatusCode.enum'
 
- class Http {
+class Http {
   instance: AxiosInstance
   constructor() {
     this.instance = axios.create({
@@ -13,8 +15,22 @@ import config from 'src/constants/config'
         'expire-refresh-token': 60 * 60 * 24 * 160 // 160 ngày
       }
     })
+    // Add a response interceptor
+    this.instance.interceptors.response.use(
+      function (response) {
+        return response
+      },
+      // eslint-disable-next-line prettier/prettier
+      function (error: AxiosError) {
+        if (error.response?.status !== HttpStatusCode.UnprocessableEntity) {
+          const data: any | undefined = error.response?.data
+          const message = data.message || error.message
+          toast.error(message)
+        }
+        return Promise.reject(error)
+      }
+    )
+  }
 }
- }
-
 const http = new Http().instance
-export default Http
+export default http
