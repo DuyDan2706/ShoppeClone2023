@@ -1,15 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { getrule } from 'src/utils/rule'
+import { schema,Schema } from 'src/utils/rule'
 import Input from 'src/components/Input'
+import { yupResolver } from '@hookform/resolvers/yup';
 
-
-interface FormData {
-  email: string
-  password: string
-  cofirm_password: string
-}
+type FormData =Schema
+ 
 export default function Register() {
   const {
     register,
@@ -17,9 +14,11 @@ export default function Register() {
     getValues,
     watch,
     formState: { errors }
-  } = useForm<FormData>()
+  } = useForm<FormData>({
+    resolver: yupResolver(schema)
+  })
 
-  const rule = getrule(getValues)
+  //const rule = getrule(getValues)
   const onSubmit = handleSubmit(
     (data) => {
       console.log('data', data)
@@ -49,7 +48,7 @@ export default function Register() {
                 className='mt-8'
                 errorMessage={errors.email?.message}
                 placeholder='Email'
-                rule={rule.email}
+                //rule={rule.email}
                 autoComplete='on'
               />
               <Input
@@ -59,7 +58,7 @@ export default function Register() {
                 className='mt-4'
                 errorMessage={errors.password?.message}
                 placeholder='password'
-                rule={rule.password}
+                //rule={rule.password}
                 autoComplete='on'
               />
               <Input
@@ -69,7 +68,7 @@ export default function Register() {
                 className='mt-4'
                 errorMessage={errors.cofirm_password?.message}
                 placeholder='Cofirm password'
-                rule={rule.cofirm_password}
+                //rule={rule.cofirm_password}
                 autoComplete='on'
               />
               {/* // <div className='mt-8'>
