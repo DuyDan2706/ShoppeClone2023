@@ -1,33 +1,28 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
     <footer className='bg-neutral-100 py-16'>
       <div className='mx-auto max-w-7xl py-4'>
         <div className='grid-col-1 lg:grid-col-3 grid gap-4'>
-          <div className='lg:col-span-1'>
-            <div> © 2023 Shopee. Tất cả các quyền được bảo lưu.</div>
+          <div className='text-center lg:col-span-1'>
+            <div> © 2023 Data20store. Tất cả các quyền được bảo lưu.</div>
             <div className='lg:col-span-2'>
-              <div>
-                Quốc gia & Khu vực: Singapore Indonesia Đài Loan Thái Lan Malaysia Việt Nam Philippines Brazil México
-                Colombia Chile
-              </div>
+              <div></div>
             </div>
           </div>
         </div>
         <div className='mt-10 text-center text-sm'>
-          <div>Công ty TNHH Shopee</div>
+          <div className=' text-2xl'>data20store</div>
           <div className='mt-2'>
-            Địa chỉ: Tầng 4-5-6, Tòa nhà Capital Place, số 29 đường Liễu Giai, Phường Ngọc Khánh, Quận Ba Đình, Thành
-            phố Hà Nội, Việt Nam. Tổng đài hỗ trợ: 19001221 - Email: cskh@hotro.shopee.vn
+            Địa chỉ: Lô b, Cư xá Thanh Đa, Quận Bình thạnh, Thành Phố Hồ chí Minh - Email: Data20store@gmail.com.vn
           </div>
-          <div className='mt-2'>
-            Chịu Trách Nhiệm Quản Lý Nội Dung: Nguyễn Đức Trí - Điện thoại liên hệ: 024 73081221 (ext 4678)
-          </div>
-          <div className='mt-2'>
-            Mã số doanh nghiệp: 0106773786 do Sở Kế hoạch & Đầu tư TP Hà Nội cấp lần đầu ngày 10/02/2015
-          </div>
-          <div className='mt-2'>© 2015 - Bản quyền thuộc về Công ty TNHH Shopee</div>
+          <div className='mt-2'>Chịu Trách Nhiệm Quản Lý Nội Dung: Data20store - Điện thoại liên hệ: 0929.047.379</div>
+          <Link to='https://www.tiktok.com/@data20store' className='mt-2 text-2xl'>
+            tiktok: data20store
+          </Link>
+          <div className='mt-2'>© 2023 - Bản quyền thuộc về Data20store</div>
         </div>
       </div>
     </footer>
