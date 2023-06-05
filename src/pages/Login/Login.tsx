@@ -54,7 +54,14 @@ export default function Login() {
   return (
     <div className='bg-orange-500'>
       <div className='container'>
-        <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-32 lg:pr-10'>
+        <div className='grid grid-cols-2 py-12 lg:grid-cols-5 lg:py-32 lg:pr-11'>
+          {/* <div className='lg:col-span-2' >
+        <img
+            className=' h-auto p-6 -mt-4 shadow-sm'
+            src='https://firebasestorage.googleapis.com/v0/b/subscriptionmilk.appspot.com/o/img%2FTD%20(2).png?alt=media&token=14f58401-fd62-4b6a-bf73-b6dcde64d9ad&_gl=1*1mlx6yv*_ga*NDI1NTcxNTI2LjE2Njg0MzU3MDI.*_ga_CW55HF8NVT*MTY4NTc1MDI2My4zOC4xLjE2ODU3NTA1MzcuMC4wLjA'
+            alt='dan11'
+          />
+        </div> */}
           <div className='lg:col-span-2 lg:col-start-4'>
             <form className='rounded bg-white p-10 shadow-sm' onSubmit={onSubmit} noValidate>
               <div className='text-2xl'>Đăng Nhập</div>
