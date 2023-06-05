@@ -129,13 +129,21 @@ export default function Header() {
             className='cursor-poiter flex items-center py-1 hover:text-gray-300'
             renderPopover={
               <div>
-                <Link to='/' className='hover: block bg-white px-3 py-2 text-cyan-500 hover:bg-slate-100 w-full text-left'>
+                <Link
+                  to='/'
+                  className='hover: block w-full bg-white px-3 py-2 text-left text-cyan-500 hover:bg-slate-100'
+                >
                   Tài khoản của tôi
                 </Link>
-                <Link to='/' className='hover: block bg-white px-3 py-2 text-cyan-500 hover:bg-slate-100 w-full text-left'>
+                <Link
+                  to='/'
+                  className='hover: block w-full bg-white px-3 py-2 text-left text-cyan-500 hover:bg-slate-100'
+                >
                   Đơn mua{' '}
                 </Link>
-                <button className='hover: block bg-white px-3 py-2 text-cyan-500 hover:bg-slate-100 w-full text-left'>Đăng xuất</button>
+                <button className='hover: block w-full bg-white px-3 py-2 text-left text-cyan-500 hover:bg-slate-100'>
+                  Đăng xuất
+                </button>
               </div>
             }
           >
@@ -196,23 +204,111 @@ export default function Header() {
               </button>
             </div>
           </form>
-          <div className='col-span-1 ml-6 '>
-            <Link to='/' className=''>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                strokeWidth={1.5}
-                stroke='currentColor'
-                className='h-10 w-10'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z'
-                />
-              </svg>
-            </Link>
+          <div className='col-span-1 ml-6 justify-self-start '>
+            <Popover
+              placement='bottom-end'
+              renderPopover={
+                <div className=' relative max-w-[400px] rounded-sm border border-gray-200 bg-white text-sm shadow-md'>
+                  <div className='p-2'>
+                    <div className='capitalize text-gray-400'>Sản phẩm mới thêm</div>
+                    <div className='mt-5'>
+                      <div className='mt-4 flex'>
+                        <div className='flex-shrink-0'>
+                          <img
+                            className='w-11 object-cover'
+                            src='https://down-vn.img.susercontent.com/file/vn-11134201-23030-xe1ikb1r49nv6f'
+                            alt='gáu vuông'
+                          />
+                        </div>
+                        <div className='ml-2 flex-grow overflow-hidden'>
+                          <div className='truncate'>
+                            Bộ phụ kiện bảo vệ cáp sạc thiết kế nhân vật hoạt hình dễ thương cho bộ sạc 18W và 20W
+                          </div>
+                        </div>
+                        <div className='ml-2 flex-shrink-0'>
+                          <span className='text-orange-500'>54.900</span>
+                        </div>
+                      </div>
+                      <div className='mt-4 flex'>
+                        <div className='flex-shrink-0'>
+                          <img
+                            className='w-11 object-cover'
+                            src='https://down-vn.img.susercontent.com/file/vn-11134201-23030-xe1ikb1r49nv6f'
+                            alt='gáu vuông'
+                          />
+                        </div>
+                        <div className='ml-2 flex-grow overflow-hidden'>
+                          <div className='truncate'>
+                            Bộ phụ kiện bảo vệ cáp sạc thiết kế nhân vật hoạt hình dễ thương cho bộ sạc 18W và 20W
+                          </div>
+                        </div>
+                        <div className='ml-2 flex-shrink-0'>
+                          <span className='text-orange-500'>54.900</span>
+                        </div>
+                      </div>
+                      <div className='mt-4 flex'>
+                        <div className='flex-shrink-0'>
+                          <img
+                            className='w-11 object-cover'
+                            src='https://down-vn.img.susercontent.com/file/vn-11134201-23030-xe1ikb1r49nv6f'
+                            alt='gáu vuông'
+                          />
+                        </div>
+                        <div className='ml-2 flex-grow overflow-hidden'>
+                          <div className='truncate'>
+                            Bộ phụ kiện bảo vệ cáp sạc thiết kế nhân vật hoạt hình dễ thương cho bộ sạc 18W và 20W
+                          </div>
+                        </div>
+                        <div className='ml-2 flex-shrink-0'>
+                          <span className='text-orange-500'>54.900</span>
+                        </div>
+                      </div>
+                      <div className='mt-4 flex'>
+                        <div className='flex-shrink-0'>
+                          <img
+                            className='w-11 object-cover'
+                            src='https://down-vn.img.susercontent.com/file/vn-11134201-23030-xe1ikb1r49nv6f'
+                            alt='gáu vuông'
+                          />
+                        </div>
+                        <div className='ml-2 flex-grow overflow-hidden'>
+                          <div className='truncate'>
+                            Bộ phụ kiện bảo vệ cáp sạc thiết kế nhân vật hoạt hình dễ thương cho bộ sạc 18W và 20W
+                          </div>
+                        </div>
+                        <div className='ml-2 flex-shrink-0'>
+                          <span className='text-orange-500'>54.900</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className='mt-6 flex items-center justify-between'>
+                      <div className='text-xs capitalize'> Thêm vào giỏ hàng</div>
+                      <button className=' rounded-sm bg-orange-500 px-4 py-2 capitalize text-white hover:bg-opacity-80'>
+                        {' '}
+                        Xem Giỏ hàng
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              }
+            >
+              <Link to='/' className=''>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  strokeWidth={1.5}
+                  stroke='currentColor'
+                  className='h-10 w-10'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z'
+                  />
+                </svg>
+              </Link>
+            </Popover>
           </div>
         </div>
       </div>
