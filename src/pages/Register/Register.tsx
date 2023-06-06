@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { schema, Schema } from 'src/utils/rule'
 import Input from 'src/components/Input'
@@ -8,11 +8,14 @@ import { useMutation } from '@tanstack/react-query'
 import { registerAccount } from 'src/apis/auth.api'
 import { omit } from 'lodash'
 import { isAxiosUnprocessableEntityErorr } from 'src/utils/untils'
-import { ReponseApi } from 'src/types/until.type'
+import { ErrorReponse } from 'src/types/until.type'
+import { AppContext } from 'src/contexts/app.context'
 
 type FormData = Schema
 
 export default function Register() {
+  const { setIsAuthenticated } = useContext(AppContext)
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -34,9 +37,12 @@ export default function Register() {
     registerAccountMultion.mutate(body, {
       onSuccess: (data) => {
         console.log('data', data)
+        setIsAuthenticated(true)
+        navigate('/')
+    
       },
       onError: (error) => {
-        if (isAxiosUnprocessableEntityErorr<ReponseApi<Omit<FormData, 'confirm_password'>>>(error)) {
+        if (isAxiosUnprocessableEntityErorr<ErrorReponse<Omit<FormData, 'confirm_password'>>>(error)) {
           const formError = error.response?.data.data
           if (formError) {
             Object.keys(formError).forEach((key) => {

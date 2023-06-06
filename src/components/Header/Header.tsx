@@ -1,9 +1,25 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useFloating, FloatingPortal, arrow, shift, offset } from '@floating-ui/react-dom-interactions'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Popover from '../Popover'
+import { useMutation } from '@tanstack/react-query'
+import { logout } from 'src/apis/auth.api'
+import { useContext } from 'react'
+import { AppContext } from 'src/contexts/app.context'
+
 export default function Header() {
+  const { setIsAuthenticated,isAuthenticated } = useContext(AppContext)
+  const logoutMution = useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      setIsAuthenticated(false)
+    }
+  })
+
+  const handlogout = () => {
+    logoutMution.mutate()
+  }
   // const [open, setOpen] = useState(false)
   // const arrowRef = useRef<HTMLElement>(null)
   // const { x, y, reference, floating, strategy, middlewareData } = useFloating({
@@ -125,12 +141,12 @@ export default function Header() {
             </svg>
           </Popover>
 
-          <Popover
+          {isAuthenticated  &&   <Popover
             className='cursor-poiter flex items-center py-1 hover:text-gray-300'
             renderPopover={
               <div>
                 <Link
-                  to='/'
+                  to='/profile'
                   className='hover: block w-full bg-white px-3 py-2 text-left text-cyan-500 hover:bg-slate-100'
                 >
                   Tài khoản của tôi
@@ -141,7 +157,7 @@ export default function Header() {
                 >
                   Đơn mua{' '}
                 </Link>
-                <button className='hover: block w-full bg-white px-3 py-2 text-left text-cyan-500 hover:bg-slate-100'>
+                <button onClick={handlogout} className='hover: block w-full bg-white px-3 py-2 text-left text-cyan-500 hover:bg-slate-100'>
                   Đăng xuất
                 </button>
               </div>
@@ -155,8 +171,16 @@ export default function Header() {
               />
             </div>
             <div>data20store</div>
-          </Popover>
-
+          </Popover>}
+     
+          {!isAuthenticated  && (
+            <div className='flex items-center'>
+              <Link to='/register' className='mx-3 capitalize hover:texxt-white/70'>Đăng Kí</Link>
+              <div className='border-r-[1px] border-r-white/40  h-4'/>
+              <Link to='/login' className='mx-3 capitalize hover:texxt-white/70'>Đăng Nhập</Link>
+            </div>
+          )}
+      
           {/* <div className='cursor-poiter flex items-center py-1 hover:text-gray-300'>
             <div className='flex-shink-0 ml-6 mr-2 h-6 w-6'>
               <img
