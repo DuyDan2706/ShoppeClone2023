@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import config from 'src/constants/config'
 import HttpStatusCode from 'src/constants/httpStatusCode.enum'
 import { AuthReponse } from 'src/types/auth.type'
-import { clearAccessTokenFromls, getAccessTokenFromLs, saveAccessTokenLS } from './auth'
+import { clearAccessTokenFromls, getAccessTokenFromLs, saveAccessTokenLS, setProfiletols } from './auth'
 
 class Http {
   instance: AxiosInstance
@@ -38,15 +38,19 @@ class Http {
         console.log('response', response)
         const { url } = response.config
         if (url === '/login' || url === '/register') {
-          this.accessToken = (response.data as AuthReponse).data.access_token
+          const data = response.data as AuthReponse
+          this.accessToken = data.data.access_token
           saveAccessTokenLS(this.accessToken)
+          setProfiletols(data.data.user)
         } else if (url === '/logout') {
           this.accessToken = ''
+
           clearAccessTokenFromls()
         }
 
         return response
       },
+
       // eslint-disable-next-line prettier/prettier
       function (error: AxiosError) {
         if (error.response?.status !== HttpStatusCode.UnprocessableEntity) {

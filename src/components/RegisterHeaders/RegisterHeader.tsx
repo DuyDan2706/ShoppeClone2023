@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react'
 import { useMatch } from 'react-router-dom'
 
 export default function RegisterHeader() {
-    const registerMatch= useMatch('/register')
-    const isRegister = Boolean(registerMatch)
-    console.log("registerMatch",registerMatch)
+  const registerMatch = useMatch('/register')
+  const isRegister = Boolean(registerMatch)
+  console.log('registerMatch', registerMatch)
   return (
     <header className='py-5'>
       <div className='container'>
@@ -16,7 +16,7 @@ export default function RegisterHeader() {
             alt='dan11'
           />
 
-          <div className='log:text-2xl ml-5 text-4xl'>{isRegister ? 'Đăng Kí'  : 'Đăng Nhập'}</div>
+          <div className='log:text-2xl ml-5 text-4xl'>{isRegister ? 'Đăng Kí' : 'Đăng Nhập'}</div>
         </nav>
       </div>
     </header>

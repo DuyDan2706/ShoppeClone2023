@@ -10,11 +10,12 @@ import { omit } from 'lodash'
 import { isAxiosUnprocessableEntityErorr } from 'src/utils/untils'
 import { ErrorReponse } from 'src/types/until.type'
 import { AppContext } from 'src/contexts/app.context'
+import Button from 'src/Button'
 
 type FormData = Schema
 
 export default function Register() {
-  const { setIsAuthenticated } = useContext(AppContext)
+  const { setIsAuthenticated, setprofile } = useContext(AppContext)
   const navigate = useNavigate()
   const {
     register,
@@ -38,8 +39,8 @@ export default function Register() {
       onSuccess: (data) => {
         console.log('data', data)
         setIsAuthenticated(true)
+        setprofile(data.data.data.user)
         navigate('/')
-    
       },
       onError: (error) => {
         if (isAxiosUnprocessableEntityErorr<ErrorReponse<Omit<FormData, 'confirm_password'>>>(error)) {
@@ -132,13 +133,15 @@ export default function Register() {
                 <div className='mt-1 min-h-[1rem] text-sm text-red-500'>{errors.cofirm_password?.message}</div>
               </div> */}
               <div className='mt-3'>
-                <button
+                <Button
                   type='submit'
-                  className='w-full bg-red-500 px-2 py-4 text-center text-sm uppercase text-white hover:text-red-600'
+                  className='flex w-full items-center justify-center bg-red-500 px-2 py-4 text-center text-sm uppercase text-white hover:text-red-600'
+                  isLoading={registerAccountMultion.isLoading}
+                  disabled={registerAccountMultion.isLoading}
                 >
                   {' '}
                   Đăng Kí{' '}
-                </button>
+                </Button>
               </div>
               <div className='mt-8   '>
                 <div className='flex items-center justify-center text-center '>

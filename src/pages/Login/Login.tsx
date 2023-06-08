@@ -10,12 +10,13 @@ import { isAxiosUnprocessableEntityErorr } from 'src/utils/untils'
 import { ErrorReponse } from 'src/types/until.type'
 import Input from 'src/components/Input'
 import { AppContext } from 'src/contexts/app.context'
+import Button from 'src/Button'
 
 type FormData = Omit<Schema, 'confirm_password'>
 
 const loginSchema = schema.omit(['cofirm_password'])
 export default function Login() {
-  const { setIsAuthenticated } = useContext(AppContext)
+  const { setIsAuthenticated, setprofile } = useContext(AppContext)
   const navigate = useNavigate()
   const {
     register,
@@ -34,12 +35,13 @@ export default function Login() {
   //const rule = getrule(getValues)
   const onSubmit = handleSubmit((data) => {
     console.log('login', data)
-    setIsAuthenticated(true)
-    navigate('/')
 
     loginAccountMultion.mutate(data, {
       onSuccess: (data) => {
         console.log('data', data)
+        setIsAuthenticated(true)
+        setprofile(data.data.data.user)
+        navigate('/')
       },
       onError: (error) => {
         if (isAxiosUnprocessableEntityErorr<ErrorReponse<FormData>>(error)) {
@@ -111,13 +113,15 @@ export default function Login() {
                 autoComplete='on'
               />
               <div className='mt-3'>
-                <button
+                <Button
                   type='submit'
-                  className='w-full bg-red-500 px-2 py-4 text-center text-sm uppercase text-white hover:text-red-600'
+                  className='flex w-full items-center justify-center bg-red-500 px-2 py-4 text-center text-sm uppercase text-white hover:text-red-600'
+                  isLoading={loginAccountMultion.isLoading}
+                  disabled={loginAccountMultion.isLoading}
                 >
                   {' '}
                   Đăng nhập{' '}
-                </button>
+                </Button>
               </div>
               <div className='mt-8   '>
                 <div className='flex items-center justify-center text-center '>
