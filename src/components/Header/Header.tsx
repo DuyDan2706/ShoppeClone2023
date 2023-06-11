@@ -18,7 +18,7 @@ export default function Header() {
     }
   })
 
-  const handlogout = () => {
+  const handlelogout = () => {
     logoutMution.mutate()
   }
   // const [open, setOpen] = useState(false)
@@ -160,7 +160,7 @@ export default function Header() {
                     Đơn mua{' '}
                   </Link>
                   <button
-                    onClick={handlogout}
+                    onClick={handlelogout}
                     className='hover: block w-full bg-white px-3 py-2 text-left text-cyan-500 hover:bg-slate-100'
                   >
                     Đăng xuất

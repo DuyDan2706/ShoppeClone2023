@@ -5,7 +5,7 @@ import HttpStatusCode from 'src/constants/httpStatusCode.enum'
 import { AuthReponse } from 'src/types/auth.type'
 import { clearAccessTokenFromls, getAccessTokenFromLs, saveAccessTokenLS, setProfiletols } from './auth'
 
-class Http {
+export class Http {
   instance: AxiosInstance
   private accessToken: string
   //private refreshToken: string
@@ -35,7 +35,6 @@ class Http {
     // Add a response interceptor
     this.instance.interceptors.response.use(
       (response) => {
-        console.log('response', response)
         const { url } = response.config
         if (url === '/login' || url === '/register') {
           const data = response.data as AuthReponse
@@ -44,7 +43,6 @@ class Http {
           setProfiletols(data.data.user)
         } else if (url === '/logout') {
           this.accessToken = ''
-
           clearAccessTokenFromls()
         }
 
