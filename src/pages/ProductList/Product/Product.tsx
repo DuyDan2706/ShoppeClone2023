@@ -1,29 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Product as Product_Type } from 'src/types/product.type'
+import { formatCurrency, formatNumbertosocalStyle } from 'src/utils/untils'
 
-export default function Product() {
+interface Props {
+  product :Product_Type
+}
+export default function Product({product}:Props) {
   return (
     <Link to='/'>
       <div className='rounded-sm bg-white shadow transition-transform duration-100 hover:translate-y-[-0.0625rem] hover:shadow-sm'>
         <div className='relative w-full pt-[100%]'>
           <img
             className='absolute left-0 top-0 h-full w-full bg-white object-cover'
-            src='https://down-vn.img.susercontent.com/file/vn-11134201-23020-4xhvskpf7ynvf2_tn'
-            alt='anh1'
+            src={product.image}
+            alt={product.name}
           />
         </div>
         <div className='overflow-hidden p-2'>
           <div className='min-h-[1.75rem] text-sm line-clamp-2'>
-            Bộ phụ kiện bảo vệ cáp và củ sạc bằng silicon nhân vật hoạt hình dễ thương cho bộ sạc 18W và 20W Date84store
+          {product.name}
           </div>
           <div className='mt-3 flex items-center '>
             <div className='max-w-[50%] text-gray-500 line-through'>
               <span className='text-xs'>₫</span>
-              <span className='text-xs'>78.000</span>
+              <span className='text-xs'>{formatCurrency(product.price_before_discount)}</span>
             </div>
             <div className='ml-1 truncate text-orange-300'>
               <span className='text-xs'>₫</span>
-              <span className='text-xs'>46.900</span>
+              <span className='text-xs'>{formatCurrency(product.price)}</span>
             </div>
           </div>
         </div>
@@ -63,7 +68,7 @@ export default function Product() {
             </div>
           </div>
           <div className="ml-2 text-sm">
-            <span className='ml-1'> Đã bán 1.4k</span>
+            <span className='ml-1'> Đã bán {formatNumbertosocalStyle(product.sold)}</span>
           </div>
         </div>
       </div>
