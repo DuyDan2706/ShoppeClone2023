@@ -63,7 +63,7 @@ export default function Product() {
             </div>
           </div>
           <div className="ml-2 text-sm">
-            <span className='ml-1'> Đã bán 1.2k</span>
+            <span className='ml-1'> Đã bán 1.4k</span>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { schema, Schema } from 'src/utils/rule'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
-import { login } from 'src/apis/auth.api'
+import authApi from 'src/apis/auth.api'
 import { omit } from 'lodash'
 import { isAxiosUnprocessableEntityErorr } from 'src/utils/untils'
 import { ErrorReponse } from 'src/types/until.type'
@@ -29,7 +29,7 @@ export default function Login() {
   })
 
   const loginAccountMultion = useMutation({
-    mutationFn: (body: Omit<FormData, 'cofirm_password'>) => login(body)
+    mutationFn: (body: Omit<FormData, 'cofirm_password'>) => authApi.login(body)
   })
 
   //const rule = getrule(getValues)

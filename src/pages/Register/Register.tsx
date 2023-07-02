@@ -5,7 +5,7 @@ import { schema, Schema } from 'src/utils/rule'
 import Input from 'src/components/Input'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
-import { registerAccount } from 'src/apis/auth.api'
+import authApi from 'src/apis/auth.api'
 import { omit } from 'lodash'
 import { isAxiosUnprocessableEntityErorr } from 'src/utils/untils'
 import { ErrorReponse } from 'src/types/until.type'
@@ -29,7 +29,7 @@ export default function Register() {
 
   // goi api len
   const registerAccountMultion = useMutation({
-    mutationFn: (body: Omit<FormData, 'cofirm_password'>) => registerAccount(body)
+    mutationFn: (body: Omit<FormData, 'cofirm_password'>) =>authApi.registerAccount(body)
   })
 
   //const rule = getrule(getValues)

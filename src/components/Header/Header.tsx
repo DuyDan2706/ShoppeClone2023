@@ -4,14 +4,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Popover from '../Popover'
 import { useMutation } from '@tanstack/react-query'
-import { logout } from 'src/apis/auth.api'
+import authApi from 'src/apis/auth.api'
 import { useContext } from 'react'
 import { AppContext } from 'src/contexts/app.context'
 
 export default function Header() {
   const { setIsAuthenticated, isAuthenticated, setprofile, profile } = useContext(AppContext)
   const logoutMution = useMutation({
-    mutationFn: logout,
+    mutationFn: authApi.logout,
     onSuccess: () => {
       setIsAuthenticated(false)
       setprofile(null)
@@ -229,9 +229,9 @@ export default function Header() {
                 >
                   <path
                     // eslint-disable-next-line react/no-unknown-property
-                    stroke-linecap='round'
+                    strokeLinecap="round"
                     // eslint-disable-next-line react/no-unknown-property
-                    stroke-linejoin='round'
+                    strokeLinejoin ='round'
                     d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
                   />
                 </svg>
