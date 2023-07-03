@@ -4,6 +4,7 @@ import config from 'src/constants/config'
 import HttpStatusCode from 'src/constants/httpStatusCode.enum'
 import { AuthReponse } from 'src/types/auth.type'
 import { clearAccessTokenFromls, getAccessTokenFromLs, saveAccessTokenLS, setProfiletols } from './auth'
+import { URL_LOGIN, URL_LOGOUT, URL_REGISTER } from 'src/apis/auth.api'
 
 export class Http {
   instance: AxiosInstance
@@ -36,18 +37,20 @@ export class Http {
     this.instance.interceptors.response.use(
       (response) => {
         const { url } = response.config
-        if (url === '/login' || url === '/register') {
+        if (url === URL_LOGIN || url === URL_REGISTER) {
           const data = response.data as AuthReponse
           this.accessToken = data.data.access_token
           saveAccessTokenLS(this.accessToken)
           setProfiletols(data.data.user)
-        } else if (url === '/logout') {
+        } else if (url ===URL_LOGOUT) {
           this.accessToken = ''
+          
           clearAccessTokenFromls()
         }
 
         return response
       },
+      
 
       // eslint-disable-next-line prettier/prettier
       function (error: AxiosError) {
@@ -58,6 +61,7 @@ export class Http {
         }
         return Promise.reject(error)
       }
+      
     )
   }
 }

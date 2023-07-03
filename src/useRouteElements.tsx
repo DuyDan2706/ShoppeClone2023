@@ -47,7 +47,7 @@ export default function useRouteElements() {
       element: <ProtectedRoute />,
       children: [
         {
-          path: path.register,
+          path: path.profile,
           element: (
             <MainLayout>
               <Profile />
