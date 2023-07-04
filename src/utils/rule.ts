@@ -72,9 +72,35 @@ export const schema = yup.object({
     .required('Nhập lại password là không được để trống')
     .min(5, 'Độ dài từ 6-160 ký tự')
     .max(160, 'Độ dài từ 6-160 ký tự')
-    .oneOf([yup.ref('password')], 'Xác nhận mật khẩu không khớp với mật khẩu')
+    .oneOf([yup.ref('password')], 'Xác nhận mật khẩu không khớp với mật khẩu'),
+    price_min: yup.string().test({
+      name: 'price-not-allowed',
+      message: 'Giá không phù hợp',
+      test: testPriceMinMax
+    }),
+    price_max: yup.string().test({
+      name: 'price-not-allowed',
+      message: 'Giá không phù hợp',
+      test: testPriceMinMax
+    }),
+    name: yup.string().trim().required('Tên sản phẩm là bắt buộc')
 })
+function testPriceMinMax(this: yup.TestContext<yup.AnyObject>) {
+  const { price_max, price_min } = this.parent as { price_min: string; price_max: string }
+  if (price_min !== '' && price_max !== '') {
+    return Number(price_max) >= Number(price_min)
+  }
+  return price_min !== '' || price_max !== ''
+}
 
+const handleConfirmPasswordYup = (refString: string) => {
+  return yup
+    .string()
+    .required('Nhập lại password là bắt buộc')
+    .min(6, 'Độ dài từ 6 - 160 ký tự')
+    .max(160, 'Độ dài từ 6 - 160 ký tự')
+    .oneOf([yup.ref(refString)], 'Nhập lại password không khớp')
+}
 const loginSchema = schema.omit(['cofirm_password'])
 
 type loginSchema = yup.InferType<typeof loginSchema>
