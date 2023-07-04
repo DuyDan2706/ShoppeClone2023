@@ -197,7 +197,7 @@ export default function AsiderFIlter({ queryConfig, categories }: Props) {
             />
           </div>
           <div className='mt-1 min-h-[1.25rem] text-center text-sm text-red-600'>{errors.price_min?.message}</div>
-          <Button className='flex w-full items-center justify-center bg-orange p-2 text-sm uppercase text-white hover:bg-orange/80'>
+          <Button className='bg-orange-500 flex w-full items-center justify-center bg-orange p-2 text-sm uppercase text-white hover:bg-orange/80'>
             Áp dụng
           </Button>
         </form>
@@ -208,7 +208,7 @@ export default function AsiderFIlter({ queryConfig, categories }: Props) {
       <div className='my-4 h-[1px] bg-gray-300' />
       <Button
         onClick={handleRemoveAll}
-        className='flex w-full items-center justify-center bg-orange p-2 text-sm uppercase text-white hover:bg-orange/80'
+        className=' bg-orange-500 flex w-full items-center justify-center bg-orange p-2 text-sm uppercase text-white hover:bg-orange/80'
       >
         Xóa tất cả
       </Button>
