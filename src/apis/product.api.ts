@@ -6,7 +6,7 @@ import http from "src/utils/http"
 const URL = 'products'
 
 const productapi = {
-  getproduct(params:ProductListConfig){
+  getProducts(params:ProductListConfig){
     return http.get<successReponse<ProductList>>(URL,{
       params
     })
