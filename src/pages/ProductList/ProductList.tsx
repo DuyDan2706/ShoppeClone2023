@@ -3,20 +3,18 @@
 import SortProductList from './SortProductList'
 import Product from './Product'
 import { useQuery } from '@tanstack/react-query'
-import useQueryParams from 'src/hooks/useQueryParams'
 import productapi from 'src/apis/product.api'
 import Pagination from 'src/components/Paginate'
-import { useState } from 'react'
-import useQueryConfig, { QueryConfig } from 'src/hooks/useQueryConfig'
+import useQueryConfig from 'src/hooks/useQueryConfig'
 import { ProductListConfig } from 'src/types/product.type'
 import categoryApi from 'src/apis/category.api'
 import AsiderFIlter from './AsiderFIlter'
 
 
 export default function ProductList() {
-  const queryParams = useQueryParams()
+  
   const queryConfig = useQueryConfig()
-  const [page, setPage] = useState(1)
+
 
   const { data: productsData } = useQuery({
     queryKey: ['products', queryConfig],

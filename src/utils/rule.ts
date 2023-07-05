@@ -1,4 +1,4 @@
-import type { RegisterOptions } from 'react-hook-form'
+// import type { RegisterOptions } from 'react-hook-form'
 import * as yup from 'yup'
 // type Rules = { [key in 'email' | 'password' | 'cofirm_password']?: RegisterOptions }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, prettier/prettier
