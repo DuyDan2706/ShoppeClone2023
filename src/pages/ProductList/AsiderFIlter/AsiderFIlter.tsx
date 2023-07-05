@@ -65,7 +65,7 @@ export default function AsiderFIlter({ queryConfig, categories }: Props) {
   }
 
   return (
-    <div className='py-4'>
+    <div className='py-4 md:42 '>
       <Link
         to={path.home}
         className={classNames('flex items-center font-bold', {
@@ -92,7 +92,7 @@ export default function AsiderFIlter({ queryConfig, categories }: Props) {
         {categories.map((categoryItem) => {
           const isActive = category === categoryItem._id
           return (
-            <li className='py-2 pl-2' key={categoryItem._id}>
+            <li className='py-2 pl-2 ' key={categoryItem._id}>
               <Link
                 to={{
                   pathname: path.home,

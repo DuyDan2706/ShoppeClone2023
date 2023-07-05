@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFloating, FloatingPortal, arrow, shift, offset, type Placement } from '@floating-ui/react-dom-interactions'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useRef, useState, useId } from 'react'
+import { useRef, useState } from 'react'
 
 interface Props {
   children: React.ReactNode
