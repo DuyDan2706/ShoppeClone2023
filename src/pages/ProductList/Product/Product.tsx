@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 import ProductRating from 'src/components/ProductRating'
 import { Product as Product_Type } from 'src/types/product.type'

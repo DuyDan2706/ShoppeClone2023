@@ -1,5 +1,5 @@
 
-import { ProductListConfig,Product, ProductList } from "src/types/product.type"
+import { ProductListConfig, ProductList } from "src/types/product.type"
 import { successReponse } from "src/types/until.type"
 import http from "src/utils/http"
 

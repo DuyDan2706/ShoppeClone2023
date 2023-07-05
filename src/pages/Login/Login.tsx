@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import authApi from 'src/apis/auth.api'
-import { omit } from 'lodash'
 import { isAxiosUnprocessableEntityErorr } from 'src/utils/untils'
 import { ErrorReponse } from 'src/types/until.type'
 import Input from 'src/components/Input'
@@ -21,7 +20,6 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    watch,
     setError,
     formState: { errors }
   } = useForm<FormData>({

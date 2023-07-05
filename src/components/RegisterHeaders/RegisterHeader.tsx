@@ -1,5 +1,4 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
+
 import { useMatch } from 'react-router-dom'
 
 export default function RegisterHeader() {

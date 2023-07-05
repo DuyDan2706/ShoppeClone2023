@@ -1,7 +1,7 @@
 import { getAccessTokenFromLs, getProfileFromLs } from 'src/utils/auth'
 import { createContext, useState } from 'react'
 import { User } from 'src/types/user.type'
-import { profile } from 'console'
+
 interface AppContextInterface {
   isAuthenticated: boolean
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>

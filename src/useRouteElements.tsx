@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import ProductList from './pages/ProductList/ProductList'
 import Login from './pages/Login'

@@ -1,6 +1,6 @@
-import type { RegisterOptions, UseFormGetValues } from 'react-hook-form'
+import type { RegisterOptions } from 'react-hook-form'
 import * as yup from 'yup'
-type Rules = { [key in 'email' | 'password' | 'cofirm_password']?: RegisterOptions }
+// type Rules = { [key in 'email' | 'password' | 'cofirm_password']?: RegisterOptions }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, prettier/prettier
 // export const getrule = (getValues?: UseFormGetValues<any>): Rules => ({
 //   email: {
@@ -93,15 +93,15 @@ function testPriceMinMax(this: yup.TestContext<yup.AnyObject>) {
   return price_min !== '' || price_max !== ''
 }
 
-const handleConfirmPasswordYup = (refString: string) => {
-  return yup
-    .string()
-    .required('Nhập lại password là bắt buộc')
-    .min(6, 'Độ dài từ 6 - 160 ký tự')
-    .max(160, 'Độ dài từ 6 - 160 ký tự')
-    .oneOf([yup.ref(refString)], 'Nhập lại password không khớp')
-}
-const loginSchema = schema.omit(['cofirm_password'])
+// const handleConfirmPasswordYup = (refString: string) => {
+//   return yup
+//     .string()
+//     .required('Nhập lại password là bắt buộc')
+//     .min(6, 'Độ dài từ 6 - 160 ký tự')
+//     .max(160, 'Độ dài từ 6 - 160 ký tự')
+//     .oneOf([yup.ref(refString)], 'Nhập lại password không khớp')
+// }
+// const loginSchema = schema.omit(['cofirm_password'])
 
-type loginSchema = yup.InferType<typeof loginSchema>
+// type loginSchema = yup.InferType<typeof loginSchema>
 export type Schema = yup.InferType<typeof schema>

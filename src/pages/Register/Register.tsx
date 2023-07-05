@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { schema, Schema } from 'src/utils/rule'
@@ -20,7 +20,6 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    watch,
     setError,
     formState: { errors }
   } = useForm<FormData>({
