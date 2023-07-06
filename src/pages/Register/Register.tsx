@@ -1,4 +1,4 @@
-import  { useContext } from 'react'
+import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { schema, Schema } from 'src/utils/rule'
@@ -28,7 +28,7 @@ export default function Register() {
 
   // goi api len
   const registerAccountMultion = useMutation({
-    mutationFn: (body: Omit<FormData, 'cofirm_password'>) =>authApi.registerAccount(body)
+    mutationFn: (body: Omit<FormData, 'cofirm_password'>) => authApi.registerAccount(body)
   })
 
   //const rule = getrule(getValues)

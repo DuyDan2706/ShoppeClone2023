@@ -12,7 +12,8 @@ module.exports = {
       backgroundImage: () => ({
         'login-background':
           "linear-gradient(rgba(0,0,0, 0), rgba(0,0,0, 0)), url('https://firebasestorage.googleapis.com/v0/b/subscriptionmilk.appspot.com/o/img%2FTD.png?alt=media&token=19abeb45-42d5-4bd4-9ae5-3316c36293bf&_gl=1*ivotd4*_ga*NDI1NTcxNTI2LjE2Njg0MzU3MDI.*_ga_CW55HF8NVT*MTY4NTc1MDI2My4zOC4xLjE2ODU3NTAzNDkuMC4wLjA.')",
-        // 'user-background':
+          orange: '#ee4d2d'
+          // 'user-background':
         //   "linear-gradient(rgba(0,0,0, 0), rgba(0,0,0, 0)), url('https://vshare.amazingtech.vn/static/media/bg-body.85ea3fd6814234db8af1.jpg')",
       }),
      

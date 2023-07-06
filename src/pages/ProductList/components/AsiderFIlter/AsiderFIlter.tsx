@@ -7,12 +7,12 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import omit from 'lodash/omit'
 import { QueryConfig } from 'src/hooks/useQueryConfig'
 import Button from 'src/Button'
-import RatingStars from 'src/pages/RatingStars'
+
 import { NoUndefinedField } from 'src/types/until.type'
 import { Schema, schema } from 'src/utils/rule'
 import { Category } from 'src/types/category.type'
 import InputNumber from 'src/components/InputNumber'
-
+import RatingStars from '../RatingStars'
 
 interface Props {
   queryConfig: QueryConfig
@@ -29,7 +29,6 @@ type FormData = NoUndefinedField<Pick<Schema, 'price_max' | 'price_min'>>
 const priceSchema = schema.pick(['price_min', 'price_max'])
 
 export default function AsiderFIlter({ queryConfig, categories }: Props) {
-
   const { category } = queryConfig
   const {
     control,
@@ -65,7 +64,7 @@ export default function AsiderFIlter({ queryConfig, categories }: Props) {
   }
 
   return (
-    <div className='py-4 md:42 '>
+    <div className='md:42 py-4 '>
       <Link
         to={path.home}
         className={classNames('flex items-center font-bold', {
@@ -85,7 +84,7 @@ export default function AsiderFIlter({ queryConfig, categories }: Props) {
             </g>
           </g>
         </svg>
-        {('Tất Cả Danh Mục')}
+        {'Tất Cả Danh Mục'}
       </Link>
       <div className='my-4 h-[1px] bg-gray-300' />
       <ul>
@@ -102,11 +101,11 @@ export default function AsiderFIlter({ queryConfig, categories }: Props) {
                   }).toString()
                 }}
                 className={classNames('relative px-2', {
-                  'font-semibold text-orange': isActive
+                  'text-orange font-semibold': isActive
                 })}
               >
                 {isActive && (
-                  <svg viewBox='0 0 4 7' className='absolute top-1 left-[-10px] h-2 w-2 fill-orange'>
+                  <svg viewBox='0 0 4 7' className='fill-orange absolute left-[-10px] top-1 h-2 w-2'>
                     <polygon points='4 3.5 0 0 0 7' />
                   </svg>
                 )}
@@ -134,7 +133,7 @@ export default function AsiderFIlter({ queryConfig, categories }: Props) {
             />
           </g>
         </svg>
-        {('BỘ LỌC TÌM KIẾM')}
+        {'BỘ LỌC TÌM KIẾM'}
       </Link>
       <div className='my-4 h-[1px] bg-gray-300' />
       <div className='my-5'>
@@ -197,7 +196,7 @@ export default function AsiderFIlter({ queryConfig, categories }: Props) {
             />
           </div>
           <div className='mt-1 min-h-[1.25rem] text-center text-sm text-red-600'>{errors.price_min?.message}</div>
-          <Button className='bg-orange-500 flex w-full items-center justify-center bg-orange p-2 text-sm uppercase text-white hover:bg-orange/80'>
+          <Button className='bg-orange hover:bg-orange/80 flex w-full items-center justify-center bg-orange-500 p-2 text-sm uppercase text-white'>
             Áp dụng
           </Button>
         </form>
@@ -208,7 +207,7 @@ export default function AsiderFIlter({ queryConfig, categories }: Props) {
       <div className='my-4 h-[1px] bg-gray-300' />
       <Button
         onClick={handleRemoveAll}
-        className=' bg-orange-500 flex w-full items-center justify-center bg-orange p-2 text-sm uppercase text-white hover:bg-orange/80'
+        className=' bg-orange hover:bg-orange/80 flex w-full items-center justify-center bg-orange-500 p-2 text-sm uppercase text-white'
       >
         Xóa tất cả
       </Button>

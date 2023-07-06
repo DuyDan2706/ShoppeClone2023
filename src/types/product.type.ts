@@ -8,6 +8,7 @@ export interface Product {
   sold: number
   view: number
   name: string
+  description: string
   category: {
     _id: string
     name: string
@@ -16,7 +17,6 @@ export interface Product {
   createdAt: string
   updatedAt: string
 }
-
 export interface ProductList {
   products: Product[]
   pagination: {
@@ -26,16 +26,15 @@ export interface ProductList {
   }
 }
 
-
 export interface ProductListConfig {
-  page?:number,
-  limit?:number,
-  sort_by?:'createdAt'| 'view'| 'sold'| 'price'
-  order?:'asc'| 'desc'
-  exclude?:string
-  rating_filter?:number
-  price_max?:number
-  price_min?:number
-  name?:string
+  page?: number
+  limit?: number
+  sort_by?: 'createdAt' | 'view' | 'sold' | 'price'
+  order?: 'asc' | 'desc'
+  exclude?: string
+  rating_filter?: number
+  price_max?: number
+  price_min?: number
+  name?: string
   category?: string
 }

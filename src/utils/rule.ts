@@ -73,17 +73,17 @@ export const schema = yup.object({
     .min(5, 'Độ dài từ 6-160 ký tự')
     .max(160, 'Độ dài từ 6-160 ký tự')
     .oneOf([yup.ref('password')], 'Xác nhận mật khẩu không khớp với mật khẩu'),
-    price_min: yup.string().test({
-      name: 'price-not-allowed',
-      message: 'Giá không phù hợp',
-      test: testPriceMinMax
-    }),
-    price_max: yup.string().test({
-      name: 'price-not-allowed',
-      message: 'Giá không phù hợp',
-      test: testPriceMinMax
-    }),
-    name: yup.string().trim().required('Tên sản phẩm là bắt buộc')
+  price_min: yup.string().test({
+    name: 'price-not-allowed',
+    message: 'Giá không phù hợp',
+    test: testPriceMinMax
+  }),
+  price_max: yup.string().test({
+    name: 'price-not-allowed',
+    message: 'Giá không phù hợp',
+    test: testPriceMinMax
+  }),
+  name: yup.string().trim().required('Tên sản phẩm là bắt buộc')
 })
 function testPriceMinMax(this: yup.TestContext<yup.AnyObject>) {
   const { price_max, price_min } = this.parent as { price_min: string; price_max: string }

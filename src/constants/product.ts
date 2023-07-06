@@ -8,4 +8,4 @@ export const sortBy = {
 export const order = {
   asc: 'asc',
   desc: 'desc'
-}as const
+} as const

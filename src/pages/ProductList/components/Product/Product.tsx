@@ -1,15 +1,15 @@
-
 import { Link } from 'react-router-dom'
 import ProductRating from 'src/components/ProductRating'
+import path from 'src/constants/path'
 import { Product as Product_Type } from 'src/types/product.type'
 import { formatCurrency, formatNumbertosocalStyle } from 'src/utils/untils'
 
 interface Props {
-  product :Product_Type
+  product: Product_Type
 }
-export default function Product({product}:Props) {
+export default function Product({ product }: Props) {
   return (
-    <Link to='/'>
+    <Link to={`${path.home}${product._id}`}>
       <div className='rounded-sm bg-white shadow transition-transform duration-100 hover:translate-y-[-0.0625rem] hover:shadow-sm'>
         <div className='relative w-full pt-[100%]'>
           <img
@@ -19,9 +19,7 @@ export default function Product({product}:Props) {
           />
         </div>
         <div className='overflow-hidden p-2'>
-          <div className='min-h-[1.75rem] text-sm line-clamp-2'>
-          {product.name}
-          </div>
+          <div className='min-h-[1.75rem] text-sm line-clamp-2'>{product.name}</div>
           <div className='mt-3 flex items-center '>
             <div className='max-w-[50%] text-gray-500 line-through'>
               <span className='text-xs'>₫</span>
@@ -34,9 +32,8 @@ export default function Product({product}:Props) {
           </div>
         </div>
         <div className='mt-3 flex items-center justify-end'>
-         <ProductRating rating={product.rating}
-         />
-          <div className="ml-2 text-sm">
+          <ProductRating rating={product.rating} />
+          <div className='ml-2 text-sm'>
             <span className='ml-1'> Đã bán {formatNumbertosocalStyle(product.sold)}</span>
           </div>
         </div>

@@ -1,4 +1,3 @@
-
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import ProductList from './pages/ProductList/ProductList'
 import Login from './pages/Login'
@@ -9,6 +8,7 @@ import Profile from './pages/Profile'
 import { useContext } from 'react'
 import { AppContext } from './contexts/app.context'
 import path from 'src/constants/path'
+import ProductDetail from './pages/ProductDetail'
 function ProtectedRoute() {
   const { isAuthenticated } = useContext(AppContext)
   return isAuthenticated ? <Outlet /> : <Navigate to='/login' />
@@ -55,6 +55,15 @@ export default function useRouteElements() {
           )
         }
       ]
+    },
+    {
+      path: path.productDetail,
+      index: true,
+      element: (
+        <MainLayout>
+          <ProductDetail />
+        </MainLayout>
+      )
     },
     {
       path: '',

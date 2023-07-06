@@ -21,7 +21,6 @@ export default function useQueryConfig() {
       price_min: queryParams.price_min,
       rating_filter: queryParams.rating_filter,
       category: queryParams.category
-    
     },
     isUndefined
   )

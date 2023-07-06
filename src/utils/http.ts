@@ -42,15 +42,14 @@ export class Http {
           this.accessToken = data.data.access_token
           saveAccessTokenLS(this.accessToken)
           setProfiletols(data.data.user)
-        } else if (url ===URL_LOGOUT) {
+        } else if (url === URL_LOGOUT) {
           this.accessToken = ''
-          
+
           clearAccessTokenFromls()
         }
 
         return response
       },
-      
 
       // eslint-disable-next-line prettier/prettier
       function (error: AxiosError) {
@@ -61,7 +60,6 @@ export class Http {
         }
         return Promise.reject(error)
       }
-      
     )
   }
 }
